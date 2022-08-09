@@ -3,6 +3,6 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   basePath: "/BaestaMap",
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

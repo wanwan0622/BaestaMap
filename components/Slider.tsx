@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Slider from "react-slick";
-import {ArrowCircleLeftOutlined, ArrowCircleRightOutlined} from "@mui/icons-material";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Tooltip } from "@mui/material";
 
-export function SliderView() {
+const cardStyle = {
+  width: "95%",
+  height: "170px",
+  border: "3px solid #FC9CFC",
+  padding: "8px",
+  margin: "auto auto 12px auto",
+};
 
+export function SliderView() {
   const [activePage, setActivePage] = useState(0);
 
   const settings = {
     dots: true,
     arrows: false,
     centerMode: true,
+    centerPadding: "50px",
     infinite: false,
     draggable: true,
     speed: 500,
@@ -19,32 +28,31 @@ export function SliderView() {
         const color = activePage === 0 ? "disabled" : "action";
         return (
           <Tooltip arrow title={"ページ1"}>
-            <ArrowCircleLeftOutlined color={color} />
+            <ChevronLeftIcon color={color} />
           </Tooltip>
         );
       } else {
         const color = activePage === 1 ? "disabled" : "action";
         return (
           <Tooltip arrow title={"ページ2"}>
-            <ArrowCircleRightOutlined color={color} />
+            <ChevronRightIcon color={color} />
           </Tooltip>
         );
       }
     },
-    beforeChange: (_current: number, next: number) =>
-      setActivePage(next),
+    beforeChange: (_current: number, next: number) => setActivePage(next),
   };
 
   return (
-    <div  style={{width: "50%"}}>
+    <div style={{ width: "50%" }}>
       <Slider {...settings}>
-      <div style={{width: "50%"}}>
-        <h3>1</h3>
-      </div>
-      <div>
-        <h3>2</h3>
-      </div>
-    </Slider>
+        <div>
+          <div style={cardStyle}>1</div>
+        </div>
+        <div>
+          <div style={cardStyle}>2</div>
+        </div>
+      </Slider>
     </div>
   );
 }

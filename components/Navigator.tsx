@@ -1,7 +1,7 @@
 // import { a } from "react-router-dom";
 
 // import "./styles.css";
-import Link from 'next/link';
+import Link from "next/link";
 import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -50,13 +50,17 @@ export function Navigator() {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1, width: "100%", height: "2em", margin: "0"}}>
+      <Box sx={{ flexGrow: 1, width: "100%", height: "2em", margin: "0" }}>
         <AppBar position="static">
-          <Toolbar
-            sx={{ width: "100%", backgroundColor: "#2C2C2C"}}
-            >
-            <Link href="/" passHref style={{margin: "auto auto auto 0"}}>
-              <a><img alt="logo" src="/BaestaMap/imgs/logo.png" style={{height: "50px"}}></img></a>
+          <Toolbar sx={{ width: "100%", backgroundColor: "#2C2C2C" }}>
+            <Link href="/" passHref style={{ margin: "auto auto auto 0" }}>
+              <a>
+                <img
+                  alt="logo"
+                  src="/BaestaMap/imgs/logo.png"
+                  style={{ height: "50px" }}
+                ></img>
+              </a>
             </Link>
             <IconButton
               size="large"
@@ -72,16 +76,16 @@ export function Navigator() {
         </AppBar>
       </Box>
       <Drawer
-        anchor='top'
+        anchor="top"
         variant="temporary"
         open={drawerOpen}
         onClose={handleDrawerToggle}
-        style={{transform: "translateY(56px)"}}
+        style={{ transform: "translateY(56px)" }}
       >
         <List
           sx={{
             backgroundColor: "#6B6B6B",
-            color: "#FFFFFF"
+            color: "#FFFFFF",
           }}
         >
           <LinkListItem href="/">お問い合わせ</LinkListItem>
@@ -90,6 +94,5 @@ export function Navigator() {
         </List>
       </Drawer>
     </>
-
   );
 }

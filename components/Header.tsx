@@ -8,8 +8,7 @@ interface Props {
 
 const Header: React.FC<Props> = ({ title, description }: Props) => {
   const defaultTitle = "Baesta Map";
-  const defaultDescription =
-    "後で書くよー";
+  const defaultDescription = "後で書くよー";
   return (
     <Head>
       <title>{title ? title : defaultTitle}</title>
