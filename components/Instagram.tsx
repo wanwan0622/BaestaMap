@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 
 export function Instagram() {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://www.instagram.com/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
   return (
     <>
       <blockquote
@@ -11,20 +17,15 @@ export function Instagram() {
           background: "#FFF",
           border: "0",
           borderRadius: "3px",
-
           boxShadow: "0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)",
-
           margin: "1px",
-
           maxWidth: "540px",
-
           minWidth: "326px",
           padding: "0",
           width: "calc(100% - 2px)",
         }}
       >
         <div style={{ padding: "16px" }}>
-          {" "}
           <a
             href="https://www.instagram.com/p/Cg8VR9TvQME/?utm_source=ig_embed&amp;utm_campaign=loading"
             style={{
@@ -38,7 +39,6 @@ export function Instagram() {
             target="_blank"
             rel="noreferrer"
           >
-            {" "}
             <div
               style={{
                 display: "flex",
@@ -46,7 +46,6 @@ export function Instagram() {
                 alignItems: "center",
               }}
             >
-              {" "}
               <div
                 style={{
                   backgroundColor: "#F4F4F4",
@@ -56,7 +55,7 @@ export function Instagram() {
                   marginRight: "14px",
                   width: "40px",
                 }}
-              ></div>{" "}
+              ></div>
               <div
                 style={{
                   display: "flex",
@@ -65,7 +64,6 @@ export function Instagram() {
                   justifyContent: "center",
                 }}
               >
-                {" "}
                 <div
                   style={{
                     backgroundColor: "#F4F4F4",
@@ -75,7 +73,7 @@ export function Instagram() {
                     marginBottom: "6px",
                     width: "100px",
                   }}
-                ></div>{" "}
+                ></div>
                 <div
                   style={{
                     backgroundColor: "#F4F4F4",
@@ -87,7 +85,7 @@ export function Instagram() {
                 ></div>
               </div>
             </div>
-            <div style={{ padding: "19% 0" }}></div>{" "}
+            <div style={{ padding: "19% 0" }}></div>
             <div
               style={{
                 display: "block",
@@ -117,7 +115,6 @@ export function Instagram() {
               </svg>
             </div>
             <div style={{ paddingTop: "8px" }}>
-              {" "}
               <div
                 style={{
                   color: "#3897f0",
@@ -131,7 +128,7 @@ export function Instagram() {
                 この投稿をInstagramで見る
               </div>
             </div>
-            <div style={{ padding: "12.5% 0" }}></div>{" "}
+            <div style={{ padding: "12.5% 0" }}></div>
             <div
               style={{
                 display: "flex",
@@ -141,7 +138,6 @@ export function Instagram() {
               }}
             >
               <div>
-                {" "}
                 <div
                   style={{
                     backgroundColor: "#F4F4F4",
@@ -150,7 +146,7 @@ export function Instagram() {
                     width: "12.5px",
                     transform: "translateX(0px) translateY(7px)",
                   }}
-                ></div>{" "}
+                ></div>
                 <div
                   style={{
                     backgroundColor: "#F4F4F4",
@@ -161,7 +157,7 @@ export function Instagram() {
                     marginRight: "14px",
                     marginLeft: "2px",
                   }}
-                ></div>{" "}
+                ></div>
                 <div
                   style={{
                     backgroundColor: "#F4F4F4",
@@ -173,7 +169,6 @@ export function Instagram() {
                 ></div>
               </div>
               <div style={{ marginLeft: "8px" }}>
-                {" "}
                 <div
                   style={{
                     backgroundColor: "#F4F4F4",
@@ -182,7 +177,7 @@ export function Instagram() {
                     height: "20px",
                     width: "20px",
                   }}
-                ></div>{" "}
+                ></div>
                 <div
                   style={{
                     width: "0",
@@ -196,7 +191,6 @@ export function Instagram() {
                 ></div>
               </div>
               <div style={{ marginLeft: "auto" }}>
-                {" "}
                 <div
                   style={{
                     width: "0px",
@@ -204,7 +198,7 @@ export function Instagram() {
                     borderRight: "8px solid transparent",
                     transform: "translateY(16px)",
                   }}
-                ></div>{" "}
+                ></div>
                 <div
                   style={{
                     backgroundColor: "#F4F4F4",
@@ -213,7 +207,7 @@ export function Instagram() {
                     width: "16px",
                     transform: "translateY(-4px)",
                   }}
-                ></div>{" "}
+                ></div>
                 <div
                   style={{
                     width: "0",
@@ -224,7 +218,7 @@ export function Instagram() {
                   }}
                 ></div>
               </div>
-            </div>{" "}
+            </div>
             <div
               style={{
                 display: "flex",
@@ -234,7 +228,6 @@ export function Instagram() {
                 marginBottom: "24px",
               }}
             >
-              {" "}
               <div
                 style={{
                   backgroundColor: "#F4F4F4",
@@ -244,7 +237,7 @@ export function Instagram() {
                   marginBottom: "6px",
                   width: "224px",
                 }}
-              ></div>{" "}
+              ></div>
               <div
                 style={{
                   backgroundColor: "#F4F4F4",
@@ -289,8 +282,7 @@ export function Instagram() {
             </a>
           </p>
         </div>
-      </blockquote>{" "}
-      <script async src="//www.instagram.com/embed.js"></script>
+      </blockquote>
     </>
   );
 }
