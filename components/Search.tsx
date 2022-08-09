@@ -18,16 +18,16 @@ export function Search() {
       disablePortal
       id="combo-box-demo"
       options={suggestPlaces}
-      sx={{ width: 300 }}
+      sx={{ width: "80%" }}
       freeSolo
+      disableClearable
       renderInput={(params) => (
         <TextField
           {...params}
           label="どこでデートする？"
           placeholder="東京駅"
-          sx={{ width: "100%" }}
           InputProps={{
-            ref: params.InputProps.ref,
+            ...params.InputProps,
             endAdornment: (
               <>
                 <InputAdornment position="end">
