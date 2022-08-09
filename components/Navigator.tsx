@@ -55,8 +55,8 @@ export function Navigator() {
           <Toolbar
             sx={{ width: "100%", backgroundColor: "#2C2C2C"}}
             >
-            <Link href="/" passHref style={{m: "auto auto auto 0"}}>
-              <a><img src="/BaestaMap/imgs/logo.png" style={{height: "50px"}}></img></a>
+            <Link href="/" passHref style={{margin: "auto auto auto 0"}}>
+              <a><img alt="logo" src="/BaestaMap/imgs/logo.png" style={{height: "50px"}}></img></a>
             </Link>
             <IconButton
               size="large"
