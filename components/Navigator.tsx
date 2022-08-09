@@ -88,6 +88,7 @@ export function Navigator() {
             color: "#FFFFFF",
           }}
         >
+          <LinkListItem href="/">使い方</LinkListItem>
           <LinkListItem href="/">お問い合わせ</LinkListItem>
           <LinkListItem href="/">GitHub</LinkListItem>
           <LinkListItem href="/">BaestaMapについて</LinkListItem>
