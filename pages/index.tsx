@@ -7,6 +7,7 @@ import { Navigator } from "../components/Navigator";
 import { Search } from "../components/Search";
 import { Hint } from "../components/Hint";
 import { SliderView } from "../components/Slider";
+import { Googlemap } from "../components/Googlemap";
 
 import styles from "../styles/Home.module.css";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -24,11 +25,8 @@ const Home: NextPage = () => {
         description="簡単に近くの映えるデートスポットが探せる"
       />
       <main className={styles.main}>
-        <span>どこでデートする？</span>
-        <Hint />
-
         <Search />
-        <p>地図入れる</p>
+        <Googlemap />
         <div></div>
         <SliderView />
       </main>
