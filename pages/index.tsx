@@ -1,67 +1,64 @@
+import React from "react";
+
 import type { NextPage } from 'next'
 import Header from "../components/Header"
+
+import { Navigator } from "../components/Navigator"
+import { Search } from "../components/Search";
+import { Hint } from "../components/Hint";
+
 import styles from '../styles/Home.module.css'
+import MenuIcon from '@mui/icons-material/Menu';
+import DirectionsIcon from '@mui/icons-material/Directions';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const Home: NextPage = () => {
-  return (
-    <div className={styles.container}>
-      <Header title="Baesta Map" description='簡単に近くの映えるデートスポットが探せる' />
+  const settings = {
+    dots: true,
+    arrows: false,
+    infinite: false,
+    draggable: false,
+    speed: 500,
+  };
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Baesta Map</a>
-        </h1>
+  const Home: NextPage = () => {
+    return (
+      <div className={styles.container}>
+        <Navigator />
+        <Header title="Baesta Map" description='簡単に近くの映えるデートスポットが探せる' />
+        <main className={styles.main}>
+          <span>どこでデートする？</span>
+          <Hint />
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          <Search />
+          <p>地図入れる</p>
+          <div>
+          <Slider {...settings} style={{width: "80%"}}>
+          <div>
+            <h3>{`${"a".repeat(1000)}`}</h3>
+          </div>
+          <div>
+            <h3>2</h3>
+          </div>
+          <div>
+            <h3>3</h3>
+          </div>
+          <div>
+            <h3>4</h3>
+          </div>
+          <div>
+            <h3>5</h3>
+          </div>
+          <div>
+            <h3>6</h3>
+          </div>
+        </Slider>
         </div>
-      </main>
+          
+        </main>
+      </div>
+    )
+  }
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <img src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
-    </div>
-  )
-}
-
-export default Home
+  export default Home
