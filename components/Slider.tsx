@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+// import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+// import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+
 import { Tooltip } from "@mui/material";
 import { Instagram } from "../components/Instagram";
+import { Insta } from "../components/Insta";
 
 const cardStyle = {
-  width: "200px",
+  width: "300px",
   height: "170px",
   border: "3px solid #FC9CFC",
   padding: "12px",
-  margin: "12px auto 12px auto",
+  margin: "12px 4px 12px 4px",
   fontSize: "12px",
 };
 
@@ -21,7 +24,7 @@ export function SliderView() {
     dots: true,
     arrows: false,
     centerMode: true,
-    centerPadding: "50px",
+    centerPadding: "4px",
     infinite: false,
     draggable: true,
     speed: 500,
@@ -30,14 +33,21 @@ export function SliderView() {
         const color = activePage === 0 ? "disabled" : "action";
         return (
           <Tooltip arrow title={"ページ1"}>
-            <ChevronLeftIcon color={color} />
+            <FiberManualRecordIcon color={color} sx={{ fontSize: "80%" }} />
           </Tooltip>
         );
-      } else {
+      } else if (pageNum === 1) {
         const color = activePage === 1 ? "disabled" : "action";
         return (
           <Tooltip arrow title={"ページ2"}>
-            <ChevronRightIcon color={color} />
+            <FiberManualRecordIcon color={color} sx={{ fontSize: "80%" }} />
+          </Tooltip>
+        );
+      } else {
+        const color = activePage === 2 ? "disabled" : "action";
+        return (
+          <Tooltip arrow title={"ページ3"}>
+            <FiberManualRecordIcon color={color} sx={{ fontSize: "80%" }} />
           </Tooltip>
         );
       }
@@ -57,9 +67,16 @@ export function SliderView() {
         </div>
         <div>
           <div style={cardStyle}>
+            <div style={{ width: "80%" }}>
+              {/* <Instagram /> */}
+              <Insta />
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style={cardStyle}>
             <p>1 パンケーキ東京</p>
             <p>東京都渋谷区〇〇 1-2-3</p>
-            <Instagram />
           </div>
         </div>
       </Slider>
