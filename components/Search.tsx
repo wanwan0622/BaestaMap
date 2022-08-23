@@ -18,7 +18,7 @@ export function Search() {
       disablePortal
       id="combo-box-demo"
       options={suggestPlaces}
-      sx={{ width: "80%" }}
+      sx={{ width: "80%", height: "20px", m: "auto auto 40px auto" }}
       freeSolo
       disableClearable
       renderInput={(params) => (
@@ -31,7 +31,7 @@ export function Search() {
             endAdornment: (
               <>
                 <InputAdornment position="end">
-                  <SearchIcon />
+                  <SearchIcon sx={{ color: "#FA45FA", fontSize: "large" }} />
                 </InputAdornment>
               </>
             ),

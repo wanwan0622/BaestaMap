@@ -6,14 +6,13 @@ import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
 import { Tooltip } from "@mui/material";
 import { Instagram } from "../components/Instagram";
-import { Insta } from "../components/Insta";
 
 const cardStyle = {
-  width: "300px",
+  width: "350px",
   height: "170px",
   border: "3px solid #FC9CFC",
   padding: "12px",
-  margin: "12px 4px 12px 4px",
+  margin: "12px 4px 4px 4px",
   fontSize: "12px",
 };
 
@@ -24,7 +23,7 @@ export function SliderView() {
     dots: true,
     arrows: false,
     centerMode: true,
-    centerPadding: "4px",
+    centerPadding: "10px",
     infinite: false,
     draggable: true,
     speed: 500,
@@ -68,8 +67,7 @@ export function SliderView() {
         <div>
           <div style={cardStyle}>
             <div style={{ width: "80%" }}>
-              {/* <Instagram /> */}
-              <Insta />
+              <Instagram />
             </div>
           </div>
         </div>

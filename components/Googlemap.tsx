@@ -6,6 +6,7 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
+import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
 const containerStyle = {
   width: "300px",
