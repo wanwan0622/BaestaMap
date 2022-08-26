@@ -88,10 +88,30 @@ export function Navigator() {
             color: "#FFFFFF",
           }}
         >
-          <LinkListItem href="/">使い方</LinkListItem>
-          <LinkListItem href="/">お問い合わせ</LinkListItem>
-          <LinkListItem href="/">GitHub</LinkListItem>
-          <LinkListItem href="/">BaestaMapについて</LinkListItem>
+          <LinkListItem
+            sx={{ color: "#FFFFFF" }}
+            href="https://quilt-beluga-80c.notion.site/How-To-Use-a8ca2e232c8f490c9e14c2771dda35f4"
+          >
+            使い方
+          </LinkListItem>
+          <LinkListItem
+            sx={{ color: "#FFFFFF" }}
+            href="https://forms.gle/dAY5eGH4ZWyXhNJz8"
+          >
+            お問い合わせ
+          </LinkListItem>
+          <LinkListItem
+            sx={{ color: "#FFFFFF" }}
+            href="https://github.com/wanwan0622/BaestaMap"
+          >
+            GitHub
+          </LinkListItem>
+          <LinkListItem
+            sx={{ color: "#FFFFFF" }}
+            href="https://quilt-beluga-80c.notion.site/What-s-BaestaMap-8d864027a3fb4414a790c10d1e3d102f"
+          >
+            BaestaMapについて
+          </LinkListItem>
         </List>
       </Drawer>
     </>
