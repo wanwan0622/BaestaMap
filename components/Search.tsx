@@ -10,9 +10,10 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 
-const suggestPlaces = [{ label: "現在地" }, { label: "サポーターズ本社" }];
-
 export function Search() {
+  const suggestPlaces = [{ label: "現在地" }, { label: "サポーターズ本社" }];
+  let [inputPlace, setInputPlace] = React.useState("現在地");
+  console.log(inputPlace);
   return (
     <Autocomplete
       disablePortal
@@ -26,12 +27,15 @@ export function Search() {
           {...params}
           label="どこでデートする？"
           placeholder="東京駅"
+          onChange={(event) => setInputPlace(event.target.value)}
           InputProps={{
             ...params.InputProps,
             endAdornment: (
               <>
                 <InputAdornment position="end">
-                  <SearchIcon sx={{ color: "#FA45FA", fontSize: "large" }} />
+                  <IconButton onClick={() => console.log(inputPlace)}>
+                    <SearchIcon sx={{ color: "#FA45FA", fontSize: "large" }} />
+                  </IconButton>
                 </InputAdornment>
               </>
             ),
