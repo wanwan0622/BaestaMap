@@ -11,9 +11,8 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 
-// export let [inputPlace, setInputPlace] = React.useState("現在地");
-
 export function Search() {
+  let [inputPlace, setInputPlace] = React.useState("現在地");
   const suggestPlaces = [{ label: "現在地" }, { label: "サポーターズ本社" }];
 
   return (

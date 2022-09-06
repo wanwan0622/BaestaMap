@@ -1,6 +1,6 @@
 import React from "react";
 
-import { inputPlace } from "../components/Search";
+// import { inputPlace } from "../components/Search";
 
 type PlacesT = {
   success: boolean;
@@ -36,7 +36,19 @@ function errorCallback(error: any) {
 }
 
 export function getApi(inputPlace: string) {
-  let places: PlacesT;
+  let places = {
+    post: {
+      hashTagDocsId: "",
+      location: {
+        lat: 0,
+        lng: 0,
+        locationId: 0,
+        name: "",
+      },
+      permalink: "",
+      timestamp: "",
+    },
+  };
 
   if (inputPlace == "現在地") {
     // 現在地の緯度経度を取得

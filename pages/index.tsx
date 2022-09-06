@@ -44,7 +44,17 @@ const Home: NextPage = () => {
     timestamp: string;
   };
   let places: PlacesT;
-  let place1: PlaceT;
+  let place1: PlaceT = {
+    hashTagDocsId: "",
+    location: {
+      lat: 0,
+      lng: 0,
+      locationId: 0,
+      name: "",
+    },
+    permalink: "",
+    timestamp: "",
+  };
 
   fetch("https://baestamap-qpz6p6e7bq-uc.a.run.app", {
     // 送信先URL
@@ -74,8 +84,7 @@ const Home: NextPage = () => {
           <Googlemap />
         </div>
         <div></div>
-        {/* <SliderView place1={place1.location.name} /> */}
-        <SliderView place1={"aaa"} />
+        <SliderView place1={place1.location.name} />
       </main>
     </div>
   );
