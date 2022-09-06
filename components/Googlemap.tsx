@@ -35,7 +35,7 @@ export function Googlemap() {
   };
 
   return (
-    <LoadScript googleMapsApiKey={"AIzaSyAnDeddlbLcZsaRzZ2ZmtP_ONVtmVrnKZM"}>
+    <LoadScript googleMapsApiKey={"AIzaSyD0YxWS2l_jq0TWTNYAaNv-e7IZ1ILLAVQ"}>
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}

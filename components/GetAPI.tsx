@@ -24,16 +24,18 @@ function getLocation() {
   navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 }
 
-function successCallback(position) {
+function successCallback(position: {
+  coords: { latitude: number; longitude: number };
+}) {
   lat = position.coords.latitude;
   lng = position.coords.longitude;
 }
 
-function errorCallback(error) {
+function errorCallback(error: any) {
   alert("現在地が取得できませんでした");
 }
 
-export function GetAPI({ inputPlace }: { inputPlace: string }) {
+export function getApi(inputPlace: string) {
   let places: PlacesT;
 
   if (inputPlace == "現在地") {

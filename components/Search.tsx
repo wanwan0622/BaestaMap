@@ -1,4 +1,5 @@
 import React from "react";
+import { getApi } from "../components/GetAPI";
 
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -10,10 +11,11 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 
+// export let [inputPlace, setInputPlace] = React.useState("現在地");
+
 export function Search() {
   const suggestPlaces = [{ label: "現在地" }, { label: "サポーターズ本社" }];
-  let [inputPlace, setInputPlace] = React.useState("現在地");
-  console.log(inputPlace);
+
   return (
     <Autocomplete
       disablePortal
@@ -33,7 +35,7 @@ export function Search() {
             endAdornment: (
               <>
                 <InputAdornment position="end">
-                  <IconButton onClick={() => console.log(inputPlace)}>
+                  <IconButton onClick={() => getApi(inputPlace)}>
                     <SearchIcon sx={{ color: "#FA45FA", fontSize: "large" }} />
                   </IconButton>
                 </InputAdornment>

@@ -16,7 +16,7 @@ const cardStyle = {
   fontSize: "12px",
 };
 
-export function SliderView() {
+export function SliderView({ place1 }: { place1: string }) {
   const [activePage, setActivePage] = useState(0);
 
   const settings = {
@@ -59,7 +59,7 @@ export function SliderView() {
       <Slider {...settings}>
         <div>
           <div style={cardStyle}>
-            <p>1 パンケーキ東京</p>
+            <p>1 {place1}</p>
             <p>2 おしゃれなCAFE</p>
             <p>3 いい感じのお洋服屋さん</p>
           </div>
