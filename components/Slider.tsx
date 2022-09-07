@@ -1,24 +1,29 @@
-import React, { useState } from "react";
+/** @format */
+
+import React, { useRef, useState } from "react";
 import Slider from "react-slick";
-// import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-// import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
 import { Tooltip } from "@mui/material";
 import { Instagram } from "../components/Instagram";
-import { places } from "../components/Search";
+import { PlaceT } from "./GetAPI";
 
 const cardStyle = {
   width: "350px",
-  height: "170px",
+  height: "200px",
   border: "3px solid #FC9CFC",
   padding: "12px",
-  margin: "12px 4px 4px 4px",
+  margin: "12px auto 4px auto",
   fontSize: "12px",
+  overflowY: "scroll" as "scroll",
 };
 
-export function SliderView({ place1 }: { place1: string }) {
+export function SliderView(props: { places: PlaceT[] }) {
   const [activePage, setActivePage] = useState(0);
+  const [activePlace, setActivePlace] = useState(
+    undefined as PlaceT | undefined
+  );
+  const [slider, setSlider] = useState(undefined as Slider | undefined);
 
   const settings = {
     dots: true,
@@ -54,17 +59,41 @@ export function SliderView({ place1 }: { place1: string }) {
     },
     beforeChange: (_current: number, next: number) => setActivePage(next),
   };
-  // console.log("places.post.location.name");
-  // console.log(places.post.location.name);
 
   return (
     <div style={{ width: "100%" }}>
-      <Slider {...settings}>
+      <Slider
+        {...settings}
+        ref={(slider) => {
+          if (slider) {
+            setSlider(slider);
+          }
+        }}
+      >
         <div>
           <div style={cardStyle}>
-            <p>1 {places.post.location.name}</p>
-            <p>2 おしゃれなCAFE</p>
-            <p>3 いい感じのお洋服屋さん</p>
+            {props.places.length !== 0 ? (
+              props.places.map((place: PlaceT, idx: number) => (
+                <div
+                  key={idx}
+                  style={{
+                    backgroundColor: "#FFCCFF",
+                    padding: "4px",
+                    borderRadius: "4px",
+                  }}
+                  onClick={() => {
+                    setActivePlace(place);
+                    if (slider) {
+                      slider.slickGoTo(1);
+                    }
+                  }}
+                >
+                  {idx + 1} {place.location.name}
+                </div>
+              ))
+            ) : (
+              <>Now Loading...</>
+            )}
           </div>
         </div>
         <div>
@@ -76,8 +105,16 @@ export function SliderView({ place1 }: { place1: string }) {
         </div>
         <div>
           <div style={cardStyle}>
-            <p>1 パンケーキ東京</p>
-            <p>東京都渋谷区〇〇 1-2-3</p>
+            {typeof activePlace !== "undefined" ? (
+              <>
+                <p>{activePlace.location.name}</p>
+                <p>緯度: {activePlace.location.lat}</p>
+                <p>経度: {activePlace.location.lng}</p>
+                <p>最終更新日: {activePlace.timestamp}</p>
+              </>
+            ) : (
+              <>Now Loading...</>
+            )}
           </div>
         </div>
       </Slider>

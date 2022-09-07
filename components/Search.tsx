@@ -1,20 +1,18 @@
+/** @format */
+
 import React from "react";
-import { getApi, PlacesT } from "../components/GetAPI";
+import { getApi, PlaceT } from "../components/GetAPI";
 
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { InputAdornment } from "@material-ui/core";
-
-import Paper from "@mui/material/Paper";
-import InputBase from "@mui/material/InputBase";
-import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 
-export let places: PlacesT = new PlacesT();
-
-export function Search() {
-  let [inputPlace, setInputPlace] = React.useState("現在地");
+export function Search(props: {
+  setPlaces: React.Dispatch<React.SetStateAction<PlaceT[]>>;
+}) {
+  const [inputPlace, setInputPlace] = React.useState("現在地");
   const suggestPlaces = [{ label: "現在地" }, { label: "サポーターズ本社" }];
 
   return (
@@ -25,6 +23,7 @@ export function Search() {
       sx={{ width: "80%", height: "20px", m: "auto auto 40px auto" }}
       freeSolo
       disableClearable
+      onInputChange={(_, newInputValue) => setInputPlace(newInputValue)}
       renderInput={(params) => (
         <TextField
           {...params}
@@ -36,7 +35,12 @@ export function Search() {
             endAdornment: (
               <>
                 <InputAdornment position="end">
-                  <IconButton onClick={() => (places = getApi(inputPlace))}>
+                  <IconButton
+                    onClick={async () => {
+                      const places: PlaceT[] = await getApi(inputPlace);
+                      props.setPlaces(places);
+                    }}
+                  >
                     <SearchIcon sx={{ color: "#FA45FA", fontSize: "large" }} />
                   </IconButton>
                 </InputAdornment>
