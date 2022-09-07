@@ -2,20 +2,43 @@ import React from "react";
 
 // import { inputPlace } from "../components/Search";
 
-type PlacesT = {
+class LocationT {
+  lat: number;
+  lng: number;
+  locationId: number;
+  name: string;
+
+  constructor() {
+    this.lat = 0;
+    this.lng = 0;
+    this.locationId = 0;
+    this.name = "";
+  }
+}
+
+class PostsT {
+  hashTagDocsId: string;
+  location: LocationT;
+  permalink: string;
+  timestamp: string;
+
+  constructor() {
+    this.hashTagDocsId = "";
+    this.location = new LocationT();
+    this.permalink = "";
+    this.timestamp = "";
+  }
+}
+
+export class PlacesT {
   success: boolean;
-  posts: {
-    hashTagDocsId: string;
-    location: {
-      lat: number;
-      lng: number;
-      locationId: number;
-      name: string;
-    };
-    permalink: string;
-    timestamp: string;
-  }[];
-};
+  posts: PostsT[];
+
+  constructor() {
+    this.success = false;
+    this.posts = [];
+  }
+}
 
 let lat: number;
 let lng: number;
@@ -35,21 +58,8 @@ function errorCallback(error: any) {
   alert("現在地が取得できませんでした");
 }
 
-export async function getApi(inputPlace: string) {
-  let places = {
-    success: false,
-    post: {
-      hashTagDocsId: "",
-      location: {
-        lat: 0,
-        lng: 0,
-        locationId: 0,
-        name: "",
-      },
-      permalink: "",
-      timestamp: "",
-    },
-  };
+export function getApi(inputPlace: string) {
+  let places: PlacesT = new PlacesT();
 
   if (inputPlace == "現在地") {
     // 現在地の緯度経度を取得
@@ -57,10 +67,24 @@ export async function getApi(inputPlace: string) {
 
     // 緯度経度からPlacesを取得
     let postData = { lat: lat, lng: lng };
-    console.log("現在地");
+    console.log("現在");
     console.log(postData); // OK!
 
-    await fetch("https://baestamap-qpz6p6e7bq-uc.a.run.app", {
+    // places.success = false;
+    // places.posts.push({
+    //   hashTagDocsId: "",
+    //   location: {
+    //     lat: 1,
+    //     lng: 1,
+    //     locationId: 0,
+    //     name: "aa",
+    //   },
+    //   permalink: "",
+    //   timestamp: "20220909"
+    // })
+    // console.log(places);
+
+    fetch("https://baestamap-qpz6p6e7bq-uc.a.run.app", {
       // 送信先URL
       method: "post", // 通信メソッド
       headers: {
@@ -75,7 +99,7 @@ export async function getApi(inputPlace: string) {
   } else {
     // 地名からPlacesを取得
     let postData = { query: inputPlace };
-    await fetch("https://baestamap-query-qpz6p6e7bq-uc.a.run.app", {
+    fetch("https://baestamap-query-qpz6p6e7bq-uc.a.run.app", {
       // 送信先URL
       method: "post", // 通信メソッド
       headers: {

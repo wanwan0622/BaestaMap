@@ -1,5 +1,5 @@
 import React from "react";
-import { getApi } from "../components/GetAPI";
+import { getApi, PlacesT } from "../components/GetAPI";
 
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -11,20 +11,7 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 
-export let places = {
-  success: false,
-  post: {
-    hashTagDocsId: "",
-    location: {
-      lat: 0,
-      lng: 0,
-      locationId: 0,
-      name: "",
-    },
-    permalink: "",
-    timestamp: "",
-  },
-};
+export let places: PlacesT = new PlacesT();
 
 export function Search() {
   let [inputPlace, setInputPlace] = React.useState("現在地");
