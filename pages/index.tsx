@@ -16,17 +16,6 @@ import "slick-carousel/slick/slick-theme.css";
 
 const Home: NextPage = () => {
   const [places, setPlaces] = React.useState([] as PlaceT[]);
-  let place1: PlaceT = {
-    hashTagDocsId: "",
-    location: {
-      lat: 0,
-      lng: 0,
-      locationId: 0,
-      name: "",
-    },
-    permalink: "",
-    timestamp: "",
-  };
 
   return (
     <div style={{ padding: "0 0 0 0" }}>
