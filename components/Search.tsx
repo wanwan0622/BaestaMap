@@ -11,6 +11,21 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 
+export let places = {
+  success: false,
+  post: {
+    hashTagDocsId: "",
+    location: {
+      lat: 0,
+      lng: 0,
+      locationId: 0,
+      name: "",
+    },
+    permalink: "",
+    timestamp: "",
+  },
+};
+
 export function Search() {
   let [inputPlace, setInputPlace] = React.useState("現在地");
   const suggestPlaces = [{ label: "現在地" }, { label: "サポーターズ本社" }];
@@ -34,7 +49,7 @@ export function Search() {
             endAdornment: (
               <>
                 <InputAdornment position="end">
-                  <IconButton onClick={() => getApi(inputPlace)}>
+                  <IconButton onClick={() => (places = getApi(inputPlace))}>
                     <SearchIcon sx={{ color: "#FA45FA", fontSize: "large" }} />
                   </IconButton>
                 </InputAdornment>

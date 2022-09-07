@@ -35,8 +35,9 @@ function errorCallback(error: any) {
   alert("現在地が取得できませんでした");
 }
 
-export function getApi(inputPlace: string) {
+export async function getApi(inputPlace: string) {
   let places = {
+    success: false,
     post: {
       hashTagDocsId: "",
       location: {
@@ -56,7 +57,10 @@ export function getApi(inputPlace: string) {
 
     // 緯度経度からPlacesを取得
     let postData = { lat: lat, lng: lng };
-    fetch("https://baestamap-qpz6p6e7bq-uc.a.run.app", {
+    console.log("現在地");
+    console.log(postData); // OK!
+
+    await fetch("https://baestamap-qpz6p6e7bq-uc.a.run.app", {
       // 送信先URL
       method: "post", // 通信メソッド
       headers: {
@@ -71,7 +75,7 @@ export function getApi(inputPlace: string) {
   } else {
     // 地名からPlacesを取得
     let postData = { query: inputPlace };
-    fetch("Content-Type: application/json", {
+    await fetch("https://baestamap-query-qpz6p6e7bq-uc.a.run.app", {
       // 送信先URL
       method: "post", // 通信メソッド
       headers: {
@@ -85,5 +89,6 @@ export function getApi(inputPlace: string) {
       });
   }
 
+  console.log(places);
   return places;
 }

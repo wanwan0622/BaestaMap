@@ -56,20 +56,20 @@ const Home: NextPage = () => {
     timestamp: "",
   };
 
-  fetch("https://baestamap-qpz6p6e7bq-uc.a.run.app", {
-    // 送信先URL
-    method: "post", // 通信メソッド
-    headers: {
-      "Content-Type": "application/json", // JSON形式のデータのヘッダー
-    },
-    body: JSON.stringify(postData), // JSON形式のデータ
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-      places = data;
-      place1 = data.posts[0];
-    });
+  // fetch("https://baestamap-qpz6p6e7bq-uc.a.run.app", {
+  //   // 送信先URL
+  //   method: "post", // 通信メソッド
+  //   headers: {
+  //     "Content-Type": "application/json", // JSON形式のデータのヘッダー
+  //   },
+  //   body: JSON.stringify(postData), // JSON形式のデータ
+  // })
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     // console.log(data);
+  //     places = data;
+  //     place1 = data.posts[0];
+  //   });
 
   return (
     <div style={{ padding: "0 0 0 0" }}>

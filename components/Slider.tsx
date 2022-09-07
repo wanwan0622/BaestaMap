@@ -6,6 +6,7 @@ import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
 import { Tooltip } from "@mui/material";
 import { Instagram } from "../components/Instagram";
+import { places } from "../components/Search";
 
 const cardStyle = {
   width: "350px",
@@ -53,13 +54,15 @@ export function SliderView({ place1 }: { place1: string }) {
     },
     beforeChange: (_current: number, next: number) => setActivePage(next),
   };
+  // console.log("places.post.location.name");
+  // console.log(places.post.location.name);
 
   return (
     <div style={{ width: "100%" }}>
       <Slider {...settings}>
         <div>
           <div style={cardStyle}>
-            <p>1 {place1}</p>
+            <p>1 {places.post.location.name}</p>
             <p>2 おしゃれなCAFE</p>
             <p>3 いい感じのお洋服屋さん</p>
           </div>
