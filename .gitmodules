@@ -1,0 +1,6 @@
+[submodule "BaestaMap-Backend"]
+	path = BaestaMap-Backend
+	url = https://github.com/wanwan0622/BaestaMap-Backend
+[submodule "BaestaMap-Crawler"]
+	path = BaestaMap-Crawler
+	url = https://github.com/wanwan0622/BaestaMap-Crawler
