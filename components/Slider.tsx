@@ -79,6 +79,7 @@ export function SliderView(props: { places: PlaceT[] }) {
                   style={{
                     backgroundColor: "#FFCCFF",
                     padding: "4px",
+                    margin: "4px",
                     borderRadius: "4px",
                   }}
                   onClick={() => {
@@ -99,7 +100,13 @@ export function SliderView(props: { places: PlaceT[] }) {
         <div>
           <div style={cardStyle}>
             <div style={{ width: "80%" }}>
-              <Instagram />
+              {props.places.length !== 0 ? (
+                props.places.map((place: PlaceT, idx: number) => (
+                  <Instagram key={idx} place={place} />
+                ))
+              ) : (
+                <>Now Loading...</>
+              )}
             </div>
           </div>
         </div>
