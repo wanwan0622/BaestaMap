@@ -38,7 +38,6 @@ export async function getLocation() {
 
 export async function getApi(inputPlace: string) {
   let places = [] as PlaceT[];
-  console.log("inputPlace", inputPlace);
   if (inputPlace === "現在地") {
     // 現在地の緯度経度を取得
     const coord: CoordT = await getLocation();

@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import { getApi, PlaceT } from "../components/GetAPI";
+import { getApi, PlaceT, CoordT, getLocation } from "../components/GetAPI";
 
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -13,6 +13,7 @@ export function Search(props: {
   setPlaces: React.Dispatch<React.SetStateAction<PlaceT[]>>;
   inputPlace: string;
   setInputPlace: React.Dispatch<React.SetStateAction<string>>;
+  setCenter: React.Dispatch<React.SetStateAction<CoordT>>;
 }) {
   const suggestPlaces = [{ label: "現在地" }, { label: "サポーターズ本社" }];
   return (
@@ -38,7 +39,11 @@ export function Search(props: {
                   <IconButton
                     onClick={async () => {
                       const places: PlaceT[] = await getApi(props.inputPlace);
+                      const center = await getCenter(props.inputPlace);
                       props.setPlaces(places);
+                      if (typeof center !== "undefined") {
+                        props.setCenter(center);
+                      }
                     }}
                   >
                     <SearchIcon sx={{ color: "#FA45FA", fontSize: "large" }} />
@@ -51,4 +56,41 @@ export function Search(props: {
       )}
     />
   );
+}
+
+type LocApiT = {
+  success: boolean;
+  location?: CoordT;
+};
+
+async function getLocationApi(inputPlace: string): Promise<CoordT | undefined> {
+  let center: CoordT | undefined = undefined;
+  const postData = { query: inputPlace };
+  await fetch("https://baestamap-location-qpz6p6e7bq-uc.a.run.app", {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(postData),
+  })
+    .then((response) => response.json())
+    .then((data: LocApiT) => {
+      if (data.success) {
+        center = data.location;
+      } else {
+        console.error("APIの取得に失敗しました");
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  return center;
+}
+
+async function getCenter(inputPlace: string) {
+  if (inputPlace === "現在地") {
+    return await getLocation();
+  } else {
+    return await getLocationApi(inputPlace);
+  }
 }
