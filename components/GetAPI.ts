@@ -1,6 +1,6 @@
 /** @format */
 
-type CoordT = { lat?: number; lng?: number };
+export type CoordT = { lat: number; lng: number };
 
 type LocationT = {
   locationId: number;
@@ -19,7 +19,7 @@ export type APIResT = {
   posts: PlaceT[];
 };
 
-async function getLocation() {
+export async function getLocation() {
   const getCurrentPosition = () => {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(resolve, () => {

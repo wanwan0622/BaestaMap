@@ -6,7 +6,7 @@ import {
   MarkerF,
   InfoWindow,
 } from "@react-google-maps/api";
-import { PlaceT } from "../components/GetAPI";
+import { PlaceT, CoordT, getLocation } from "../components/GetAPI";
 
 const containerStyle = {
   width: "300px",
@@ -18,16 +18,48 @@ const options = {
   zoomControl: true,
 };
 
-const center = {
-  lat: 36, // 北緯
-  lng: 136, // 東経
+let center: CoordT = {
+  lat: 35.68, // 北緯
+  lng: 139.76, // 東経
 };
 
-export function Googlemap(props: { places: PlaceT[] }) {
+type LocApiT = {
+  success: boolean;
+  location: CoordT;
+};
+
+async function getLocationApi(inputPlace: string) {
+  fetch("https://baestamap-location-qpz6p6e7bq-uc.a.run.app", {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(inputPlace),
+  })
+    .then((response) => response.json())
+    .then((data: LocApiT) => {
+      if (data.success) {
+        center = data.location;
+      } else {
+        console.error("APIの取得に失敗しました");
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
+export function Googlemap(props: { places: PlaceT[]; inputPlace: string }) {
   const [size, setSize] = useState<undefined | google.maps.Size>(undefined);
   const infoWindowOptions = {
     pixelOffset: size,
   };
+
+  if (props.inputPlace === "現在地") {
+    center = await getLocation();
+  } else {
+    await getLocationApi(props.inputPlace);
+  }
 
   return (
     <LoadScript googleMapsApiKey={"AIzaSyD0YxWS2l_jq0TWTNYAaNv-e7IZ1ILLAVQ"}>

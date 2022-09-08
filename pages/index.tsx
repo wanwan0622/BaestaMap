@@ -31,7 +31,7 @@ const Home: NextPage = () => {
           setInputPlace={setInputPlace}
         />
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Googlemap places={places} />
+          <Googlemap places={places} inputPlace={inputPlace} />
         </div>
         <SliderView places={places} />
       </main>
