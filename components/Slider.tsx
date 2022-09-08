@@ -107,7 +107,9 @@ export function SliderView(props: { places: PlaceT[] }) {
           <div style={cardStyle}>
             {typeof activePlace !== "undefined" ? (
               <>
-                <p>{activePlace.location.name}</p>
+                <p style={{ color: "#FA45FA", fontSize: "16px" }}>
+                  {activePlace.location.name}
+                </p>
                 <p>緯度: {activePlace.location.lat}</p>
                 <p>経度: {activePlace.location.lng}</p>
                 <p>最終更新日: {activePlace.timestamp}</p>
