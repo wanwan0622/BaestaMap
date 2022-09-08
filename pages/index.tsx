@@ -16,19 +16,22 @@ import "slick-carousel/slick/slick-theme.css";
 
 const Home: NextPage = () => {
   const [places, setPlaces] = React.useState([] as PlaceT[]);
-
+  const [inputPlace, setInputPlace] = React.useState("現在地");
   return (
-    <div style={{ padding: "0 0 0 0" }}>
+    <div style={{ padding: "0" }}>
       <Navigator />
       <Header
         title="Baesta Map"
         description="簡単に近くの映えるデートスポットが探せる"
       />
       <main style={{ margin: "50px 0 0 0" }} className={styles.main}>
-        <Search setPlaces={setPlaces} />
+        <Search
+          setPlaces={setPlaces}
+          inputPlace={inputPlace}
+          setInputPlace={setInputPlace}
+        />
         <div style={{ display: "flex", justifyContent: "center" }}>
           <Googlemap places={places} />
-          {/* <GoogleMap2 /> */}
         </div>
         <SliderView places={places} />
       </main>
