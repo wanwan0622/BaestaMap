@@ -3,10 +3,10 @@ import {
   GoogleMap,
   useLoadScript,
   LoadScript,
-  Marker,
+  MarkerF,
   InfoWindow,
 } from "@react-google-maps/api";
-import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import { PlaceT } from "../components/GetAPI";
 
 const containerStyle = {
   width: "300px",
@@ -23,12 +23,7 @@ const center = {
   lng: 136, // 東経
 };
 
-const positionMarker = {
-  lat: 36,
-  lng: 136,
-};
-
-export function Googlemap() {
+export function Googlemap(props: { places: PlaceT[] }) {
   const [size, setSize] = useState<undefined | google.maps.Size>(undefined);
   const infoWindowOptions = {
     pixelOffset: size,
@@ -42,13 +37,18 @@ export function Googlemap() {
         zoom={10}
         options={options}
       >
-        {/* Child components, such as markers, info windows, etc. */}
-        <Marker position={positionMarker} />
-        <InfoWindow position={positionMarker} options={infoWindowOptions}>
-          <div style={{}}>
-            <h1>秋葉原オフィス</h1>
-          </div>
-        </InfoWindow>
+        {props.places.map((place: PlaceT, idx: number) => {
+          return (
+            <MarkerF
+              key={idx}
+              position={{
+                lat: props.places[idx].location.lat,
+                lng: props.places[idx].location.lng,
+              }}
+              label={(idx + 1).toString()}
+            />
+          );
+        })}
       </GoogleMap>
     </LoadScript>
   );

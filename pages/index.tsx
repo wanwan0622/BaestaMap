@@ -27,7 +27,8 @@ const Home: NextPage = () => {
       <main style={{ margin: "50px 0 0 0" }} className={styles.main}>
         <Search setPlaces={setPlaces} />
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <Googlemap />
+          <Googlemap places={places} />
+          {/* <GoogleMap2 /> */}
         </div>
         <SliderView places={places} />
       </main>
