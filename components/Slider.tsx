@@ -99,7 +99,7 @@ export function SliderView(props: { places: PlaceT[] }) {
         </div>
         <div>
           <div style={cardStyle}>
-            <div style={{ width: "80%" }}>
+            <div style={{ width: "100%" }}>
               {typeof activePlace !== "undefined" ? (
                 <Instagram permalink={activePlace.permalink} />
               ) : (
