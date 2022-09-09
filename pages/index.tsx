@@ -23,6 +23,7 @@ const Home: NextPage = () => {
     lat: 35.68,
     lng: 139.76,
   } as CoordT);
+  const [isLoading, setIsLoading] = React.useState(false);
   return (
     <div style={{ padding: "0" }}>
       <Navigator />
@@ -36,11 +37,12 @@ const Home: NextPage = () => {
           inputPlace={inputPlace}
           setInputPlace={setInputPlace}
           setCenter={setCenter}
+          setIsLoading={setIsLoading}
         />
         <div style={{ display: "flex", justifyContent: "center" }}>
           <Googlemap places={places} inputPlace={inputPlace} center={center} />
         </div>
-        <SliderView places={places} />
+        <SliderView places={places} isLoading={isLoading} />
       </main>
     </div>
   );

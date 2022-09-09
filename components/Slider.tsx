@@ -1,9 +1,9 @@
 /** @format */
 
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-
+import CircularProgress from "@mui/material/CircularProgress";
 import { Tooltip } from "@mui/material";
 import { Instagram } from "../components/Instagram";
 import { PlaceT } from "./GetAPI";
@@ -18,7 +18,7 @@ const cardStyle = {
   overflowY: "scroll" as "scroll",
 };
 
-export function SliderView(props: { places: PlaceT[] }) {
+export function SliderView(props: { places: PlaceT[]; isLoading: boolean }) {
   const [activePage, setActivePage] = useState(0);
   const [activePlace, setActivePlace] = useState(
     undefined as PlaceT | undefined
@@ -72,7 +72,11 @@ export function SliderView(props: { places: PlaceT[] }) {
       >
         <div>
           <div style={cardStyle}>
-            {props.places.length !== 0 ? (
+            {props.isLoading ? (
+              <div style={{ textAlign: "center" }}>
+                <CircularProgress />
+              </div>
+            ) : props.places.length != 0 ? (
               props.places.map((place: PlaceT, idx: number) => (
                 <div
                   key={idx}
@@ -93,7 +97,7 @@ export function SliderView(props: { places: PlaceT[] }) {
                 </div>
               ))
             ) : (
-              <>Now Loading...</>
+              <div>検索をしていない、または投稿がありません</div>
             )}
           </div>
         </div>

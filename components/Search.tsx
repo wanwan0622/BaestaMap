@@ -14,6 +14,7 @@ export function Search(props: {
   inputPlace: string;
   setInputPlace: React.Dispatch<React.SetStateAction<string>>;
   setCenter: React.Dispatch<React.SetStateAction<CoordT>>;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const suggestPlaces = [{ label: "現在地" }, { label: "サポーターズ本社" }];
   return (
@@ -38,12 +39,14 @@ export function Search(props: {
                 <InputAdornment position="end">
                   <IconButton
                     onClick={async () => {
+                      props.setIsLoading(true);
                       const places: PlaceT[] = await getApi(props.inputPlace);
                       const center = await getCenter(props.inputPlace);
                       props.setPlaces(places);
                       if (typeof center !== "undefined") {
                         props.setCenter(center);
                       }
+                      props.setIsLoading(false);
                     }}
                   >
                     <SearchIcon sx={{ color: "#FA45FA", fontSize: "large" }} />
