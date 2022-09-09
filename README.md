@@ -1,8 +1,10 @@
 # Baesta Map
 
 <div align="center">
-  <img src="" alt="後でここに画面を貼る" width="80%">
-  <a href="https://wanwan0622.github.io/BaestaMap/">https://wanwan0622.github.io/BaestaMap/</a>
+  <img src="assets/demo.gif" alt="DEMO" height="440px">
+  <p>
+    <a href="https://wanwan0622.github.io/BaestaMap/">https://wanwan0622.github.io/BaestaMap/</a>
+  </p>
 </div>
 
 ## Concept
