@@ -115,9 +115,9 @@ export function SliderView(props: { places: PlaceT[] }) {
                 <p style={{ color: "#FA45FA", fontSize: "16px" }}>
                   {activePlace.location.name}
                 </p>
-                <p>緯度: {activePlace.location.lat}</p>
-                <p>経度: {activePlace.location.lng}</p>
-                <p>最終更新日: {activePlace.timestamp}</p>
+                <p>緯度　　　 : {activePlace.location.lat}</p>
+                <p>経度　　　 : {activePlace.location.lng}</p>
+                <p>最終更新日 : {activePlace.timestamp.substr(0, 10)}</p>
               </>
             ) : (
               <>Now Loading...</>
