@@ -10,11 +10,11 @@ import { PlaceT } from "./GetAPI";
 
 const cardStyle = {
   width: "350px",
-  height: "200px",
+  height: "250px",
   border: "3px solid #FC9CFC",
-  padding: "12px",
+  padding: "15px",
   margin: "12px auto 4px auto",
-  fontSize: "12px",
+  fontSize: "15px",
   overflowY: "scroll" as "scroll",
 };
 
@@ -37,21 +37,21 @@ export function SliderView(props: { places: PlaceT[] }) {
       if (pageNum === 0) {
         const color = activePage === 0 ? "disabled" : "action";
         return (
-          <Tooltip arrow title={"ページ1"}>
+          <Tooltip arrow title={"投稿一覧"}>
             <FiberManualRecordIcon color={color} sx={{ fontSize: "80%" }} />
           </Tooltip>
         );
       } else if (pageNum === 1) {
         const color = activePage === 1 ? "disabled" : "action";
         return (
-          <Tooltip arrow title={"ページ2"}>
+          <Tooltip arrow title={"Instagram"}>
             <FiberManualRecordIcon color={color} sx={{ fontSize: "80%" }} />
           </Tooltip>
         );
       } else {
         const color = activePage === 2 ? "disabled" : "action";
         return (
-          <Tooltip arrow title={"ページ3"}>
+          <Tooltip arrow title={"詳細"}>
             <FiberManualRecordIcon color={color} sx={{ fontSize: "80%" }} />
           </Tooltip>
         );
@@ -78,7 +78,7 @@ export function SliderView(props: { places: PlaceT[] }) {
                   key={idx}
                   style={{
                     backgroundColor: "#FFCCFF",
-                    padding: "4px",
+                    padding: "10px",
                     margin: "4px",
                     borderRadius: "4px",
                   }}

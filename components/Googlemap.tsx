@@ -24,7 +24,7 @@ export function Googlemap(props: {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={props.center}
-        zoom={10}
+        zoom={13}
         options={options}
       >
         {props.places.map((place: PlaceT, idx: number) => {
