@@ -104,8 +104,9 @@ export function SliderView(props: { places: PlaceT[]; isLoading: boolean }) {
         <div>
           <div style={cardStyle}>
             <div style={{ width: "100%" }}>
-              {typeof activePlace !== "undefined" ? (
-                <Instagram permalink={activePlace.permalink} />
+              {typeof activePlace !== "undefined" ||
+              props.places.length !== 0 ? (
+                <Instagram place={activePlace ?? props.places[0]} />
               ) : (
                 <>Now Loading...</>
               )}
