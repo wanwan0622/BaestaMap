@@ -120,9 +120,17 @@ export function SliderView(props: { places: PlaceT[]; isLoading: boolean }) {
                 <p style={{ color: "#FA45FA", fontSize: "16px" }}>
                   {activePlace.location.name}
                 </p>
-                <p>緯度　　　 : {activePlace.location.lat}</p>
-                <p>経度　　　 : {activePlace.location.lng}</p>
-                <p>最終更新日 : {activePlace.timestamp.substr(0, 10)}</p>
+                <p>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${activePlace.location.lat},${activePlace.location.lng}`}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    style={{ color: "blue" }}
+                  >
+                    Google Map
+                  </a>
+                </p>
+                <p>データ取得日 : {activePlace.timestamp.split("T")[0]}</p>
               </>
             ) : (
               <>Now Loading...</>
@@ -133,3 +141,5 @@ export function SliderView(props: { places: PlaceT[]; isLoading: boolean }) {
     </div>
   );
 }
+// https://www.google.co.jp/maps/place/35.658466547095N+139.6984577179/@35.658466547095,139.6984577179z/
+// https://www.google.com/maps/search/?api=1&query=35.658466547095,139.6984577179
